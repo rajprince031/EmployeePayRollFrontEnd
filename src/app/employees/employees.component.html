@@ -18,22 +18,35 @@
                     <th>Department</th>
                     <th>Salary</th>
                     <th>Start Date</th>
+                    <th></th>
+                    <th></th>
                     
                 </tr>
             </thead>
 
             <tbody>
-                @for (item of employeeInfo; track $index) {
+                @for (item of employeeInfo;track $index) {
                     <tr>
-                        <td>{{$index+1}}</td>
+                        <td>{{item.id}}</td>
                         <td>{{item.name}}</td>
                         <td>{{item.gender}}</td>
                         <td>{{item.department}}</td>
                         <td>{{item.salary}}</td>
                         <td>{{item.joiningDate}}</td>
+                        <td><button class="update-btn" (click) = "onClickUpdate(item)">Update</button></td>
+                        <td><button class="delete-btn" (click) = "onClickDelete(item)">Delete</button></td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
+</div>
+
+<!-- Confirmation Modal -->
+<div *ngIf="showConfirmation" class="modal">
+  <div class="modal-content">
+    <p>Are you sure you want to delete this employee?</p>
+    <button (click)="confirmDelete(true)">Yes</button>
+    <button (click)="confirmDelete(false)">No</button>
+  </div>
 </div>
