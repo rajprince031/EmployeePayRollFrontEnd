@@ -32,7 +32,11 @@ export class EmployeesComponent {
   }
 
   onClickUpdate(item: any) {
-    console.log('I am update');
+    this.router.navigate(['update'],{
+      state:{
+        response:item
+      }
+    });
   }
 
   onClickDelete(item: any) {
@@ -45,6 +49,9 @@ export class EmployeesComponent {
     console.log('I am delete', id);
     this.employeeInfo.filter(employee => employee.id !== id);
     this.http.delete('http://localhost:8080/user/' + id).subscribe({
+      next:()=>{
+
+      },
       complete: () => {
         alert('Employee deleted successfully');
         this.getInformation();
