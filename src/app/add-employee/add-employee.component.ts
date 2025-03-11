@@ -25,7 +25,9 @@ export class AddEmployeeComponent {
     private employeeService: EmployeeService,
     private router: Router,
     private http: HttpClient
-  ) {}
+  ) {
+    
+  }
 
   addEmployee() {
     // console.log("adding Employee------",this.employee);
